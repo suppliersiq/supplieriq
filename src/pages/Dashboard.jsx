@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell,
   PieChart, Pie, Legend
@@ -61,6 +62,7 @@ function periodLabel() {
 
 // ─── Component ───────────────────────────────────────────────────────────────
 export default function App() {
+  const navigate = useNavigate();
   const [activeNav, setActiveNav] = useState("Dashboard");
   const [suppliers, setSuppliers] = useState([]);
   const [events,    setEvents]    = useState([]);
@@ -201,7 +203,10 @@ export default function App() {
               {loading ? "Loading…" : periodLabel()}
             </div>
           </div>
-          <button style={{ background: "#1a1a1a", color: "#fff", border: "none", borderRadius: 8, padding: "8px 16px", fontSize: 13, cursor: "pointer", fontWeight: 500 }}>
+          <button
+            onClick={() => navigate("/register")}
+            style={{ background: "#1a1a1a", color: "#fff", border: "none", borderRadius: 8, padding: "8px 16px", fontSize: 13, cursor: "pointer", fontWeight: 500 }}
+          >
             + Add Supplier
           </button>
         </div>
